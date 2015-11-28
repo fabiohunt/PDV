@@ -1,15 +1,29 @@
-package br.com.trainning.pdv;
+package br.com.trainning.pdv.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
-public class MainActivity extends AppCompatActivity {
+import br.com.trainning.pdv.R;
+import butterknife.Bind;
+
+public class MainActivity extends BaseActivity {
+
+    //Com o uso do ButterKnife a antiga linha que era:
+    //FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+    //se torna a de baixo com o ButterKnife
+    @Bind(R.id.fab)
+    FloatingActionButton fab;
+
+    //Declarando intent para usar no IF do onOptionsItemSelected(MenuItem item)
+    Intent intent;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        // Removido pois uso agora o ButterKnife = FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -26,6 +40,9 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
+
+
     }
 
     @Override
@@ -43,9 +60,18 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_incluir) {
+            //Intent para acessar a proxima tela (activity)
+            intent = new Intent(this, IncluirNovoActivity.class);
+
+        }
+
+        if (id == R.id.action_editar) {
+            //intent = new Intent(this, EditarActivity.class);
             return true;
         }
+
+        startActivity(intent);
 
         return super.onOptionsItemSelected(item);
     }
