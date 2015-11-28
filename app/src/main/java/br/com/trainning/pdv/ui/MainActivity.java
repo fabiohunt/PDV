@@ -67,8 +67,8 @@ public class MainActivity extends BaseActivity {
         }
 
         if (id == R.id.action_editar) {
-            //intent = new Intent(this, EditarActivity.class);
-            return true;
+            intent = new Intent(this, EditarActivity.class);
+           // return true;
         }
 
         startActivity(intent);
