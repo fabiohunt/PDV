@@ -36,6 +36,27 @@ public class MyApplication extends Application{
                                 "ativo INTEGER"+
                                 ")"
                 );
+
+                db.execSQL(
+                        "CREATE TABLE Carrinho (" +
+                                "id INTEGER PRIMARY KEY AUTOINCREMENT,"+
+                                "id_compra TEXT,"+
+                                "encerrada INTEGER,"+
+                                "enviada INTEGER"+
+                                ")"
+                );
+
+                db.execSQL(
+                        "CREATE TABLE Item (" +
+                                "id INTEGER PRIMARY KEY AUTOINCREMENT,"+
+                                "id_produto INTEGER,"+
+                                "id_compra INTEGER,"+
+                                "quantidade INTEGER"+
+                                ")"
+                );
+
+
+
             }
 
             @Override
